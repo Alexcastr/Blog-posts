@@ -6,3 +6,33 @@
 .robo{
     font-family: 'Roboto', sans-serif;
 }
+
+.md-editor-content-editor,.CodeMirror-code{
+    height: 500px;
+}
+
+.shortText{
+    
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.size{
+    height:200px;
+    width:270px;
+}
+
+
+.embla {
+    overflow: hidden;
+  }
+  .embla__container {
+    display: flex;
+    
+
+  }
+  .embla__slide {
+    position: relative;
+    flex: 0 0 100%;
+  }

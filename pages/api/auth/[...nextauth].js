@@ -14,8 +14,8 @@ export default NextAuth({
    ],
    callbacks:{
     async jwt({token,account}){
-        console.log("JWT",token)
-        console.log("Account",account)
+        // console.log("JWT",token)
+        // console.log("Account",account)
         if(account?.providerAccountId){
             // enviamos al token un id sacado del account porque alli si hay id
             token.id = account.providerAccountId
@@ -51,7 +51,7 @@ export default NextAuth({
             session.user.id = token.id
             session.user.role = token.role
         }
-        console.log("Session",session)
+        //console.log("Session",session)
         return session
     }
 }
