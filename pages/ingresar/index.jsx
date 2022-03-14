@@ -1,13 +1,10 @@
 
-import { EmblaCarousel } from "../../components/EmblaCarousel";
-
-
 const index = () => {
  
 
   return (
     <div>
-      <EmblaCarousel/>
+      hiii ingresar
     </div>
   );
 

@@ -21,7 +21,7 @@ export default function Posts({posts}) {
     return (
       <>
      
-        <h1 className='text-xl text-center text-gray-700 mb-5 pt-5'>Todo lo que necesitas saber sobre marketing digital 📱</h1>
+        <h1 className='text-xl text-center text-gray-200 bg-cyan-600 py-4 mb-4'>Todo lo que necesitas saber sobre marketing digital 📱</h1>
         {/* <Link href="/admin/posts/create">Crear nueva publicación</Link> */}
 
         <section className="grid grid-cols-4 gap-5 ">

@@ -11,6 +11,7 @@
     height: 500px;
 }
 
+/* El contenido de las cards se reduzca y solo muestre la primer linea y no todo el contenido */
 .shortText{
     
     white-space: nowrap;
@@ -24,6 +25,7 @@
 }
 
 
+/* estilos de carousel de imagenes */
 .embla {
     overflow: hidden;
   }

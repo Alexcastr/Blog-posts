@@ -78,7 +78,7 @@ const create = () => {
           </div>
         ) : (
           <button
-            className="bg-yellow-200 text-black px-5 py-2 rounded-md mt-10"
+            className="bg-cyan-600 text-black px-5 py-2 rounded-md mt-10"
             onClick={saveContent}
           >
             Guardar

@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { useSession, signIn, signOut } from "next-auth/react"
+import Link from 'next/link'
 
 
 const ButtonSesion = () => {
@@ -31,61 +32,63 @@ const ButtonSesion = () => {
         <Menu.Items className="origin-top-right absolute right-0 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             {session?.user?.role === "admin" && (
-              <>
+              <div className='flex flex-col text-right pr-2'>
                 <Menu.Item>
                   {({ active }) => (
-                    <a
+                    <Link
                       href="/"
-                      className={
-                        (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-2 py-2 text-sm text-right")
-                      }
+                      as={"/"}
+                      className={ (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-2 py-2 text-sm text-right")}
                     >
                       Inicio
-                    </a>
+                    </Link>
                   )}
                 </Menu.Item>
                 
                 <Menu.Item>
                   {({ active }) => (
-                    <a
+                    <Link
                       href="/admin/posts"
+                      as={"/admin/posts"}
                       className={
                         (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-2 py-2 text-sm text-right")
                       }
                     >
                       Posts
-                    </a>
+                    </Link>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <a
+                    <Link
                       href="/admin/posts/create"
+                      as={"/admin/posts/create"}
                       className={
                         (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-2 py-2 text-sm text-right")
                       }
                     >
                       Crear
-                    </a>
+                    </Link>
                   )}
                 </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
-                    <a
+                    <Link
                       href="/admin/comments"
+                      as={"/admin/comments"}
                       className={
                         (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                         "block px-2 py-2 text-sm text-right")
                       }
                     >
                       Comments
-                    </a>
+                    </Link>
                   )}
                 </Menu.Item>
-              </>
+              </div>
             )}
 
             <form method="POST">

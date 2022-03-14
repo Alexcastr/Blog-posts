@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import axios from 'axios'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
+import Link from "next/link";
 
 // import { EmblaCarousel } from '../components/EmblaCarousel'
 
@@ -20,7 +21,7 @@ export async function getServerSideProps(context){
 
 const index = ({highlights, posts}) => {
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()])
   useEffect(() => {
     if (emblaApi) {
       // Embla API is ready
@@ -57,7 +58,7 @@ const index = ({highlights, posts}) => {
           );
         })}
       </header>
-      <h2 className="text-4xl font-bold mt-20 mb-10 text-center">
+      <h2 className="text-4xl text-gray-200 font-bold mt-20 mb-10 text-center border bg-cyan-600 py-2">
         Publicaciones más recientes
       </h2>
       <div className="embla" ref={emblaRef}>
@@ -65,7 +66,18 @@ const index = ({highlights, posts}) => {
           {posts.map((post) => {
             return (
               <div className="embla__slide" key={post.id}>
-                <img className="object-contain h-80 min-w-full mx-auto mt-8" src={post.image}></img>
+                <Link
+                  href={`/admin/posts/${post.id}`}
+                  as={`/admin/posts/${post.id}`}
+                >
+                  <img
+                    className="object-contain h-80 min-w-full mx-auto mt-8 cursor-pointer static"
+                    src={post.image}
+                  ></img>
+                </Link>
+                  <strong className="text-2xl absolute top-10 left-1/2">
+                    {post.title}
+                  </strong>
               </div>
             );
           })}

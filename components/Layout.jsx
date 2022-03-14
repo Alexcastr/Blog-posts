@@ -12,7 +12,7 @@ const Layout = ({children}) => {
         <section className="container mx-auto bg-gray-100 border border-none">{children}</section>
       </main>
 
-      <footer className='bg-red-200 text-center'> footer</footer>
+      <footer className='bg-cyan-600 text-center'> footer</footer>
     </div>
   );
   
