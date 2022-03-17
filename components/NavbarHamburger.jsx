@@ -36,6 +36,7 @@ const NavbarHamburger = ({}) => {
               <li className="nav-item px-4 my-1 hover:bg-gray-200 rounded-md ">
                 <Link
                   href="/admin/posts/create"
+                  as={"/admin/posts/create"}
                   className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
                 >
                   <a>
@@ -46,7 +47,8 @@ const NavbarHamburger = ({}) => {
               </li>
               <li className="nav-item px-4 my-1 hover:bg-gray-200 rounded-md">
                 <Link
-                  href="/test"
+                  href="/contacto"
+                  as={"/contacto"}
                   className=" py-2 flex items-center text-xs uppercase font-bold leading-snug text-black hover:opacity-75"
                 >
                   <a>

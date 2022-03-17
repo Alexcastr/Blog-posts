@@ -4,7 +4,8 @@ export default function Document() {
   return (
     <Html>
       <Head>
-      <script src="https://kit.fontawesome.com/4ccae31d53.js" crossOrigin="anonymous"></script>
+        <link rel="icon" href="Logotipo.jpeg"></link>
+        <script src="https://kit.fontawesome.com/4ccae31d53.js" crossOrigin="anonymous"></script>
       </Head>
       <body>
         <Main />

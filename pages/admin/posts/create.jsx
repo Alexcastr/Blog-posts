@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import dynamic from 'next/dynamic'
 import '@uiw/react-markdown-editor/markdown-editor.css';
 import '@uiw/react-markdown-preview/markdown.css'
@@ -37,10 +39,12 @@ const create = () => {
             highlight:highlight.current.checked,
             content,
         }).then(res=>{
+          toast.success("Post creado con exito !")
             router.replace("/admin/posts")
         })
         .catch(error=>{
             //console.log(error)
+            toast.error('Error creando post')
         })
       };
   return (
@@ -85,6 +89,7 @@ const create = () => {
           </button>
         )}
       </div>
+      <ToastContainer autoClose={5000}/>
     </>
   );
 }

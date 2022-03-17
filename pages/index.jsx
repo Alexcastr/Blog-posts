@@ -51,7 +51,14 @@ const index = ({highlights, posts}) => {
               >
                 <div className="w-full h-full bg-slate-900 flex flex-col justify-center items-center bg-opacity-70">
                   <h1 className="font-bold text-6xl">{post.title}</h1>
-                  <p className="mt-5 text-slate-100">Lee mi ultima publicación aquí</p>
+                  <Link
+                    href={`/admin/posts/${post.id}`}
+                    as={`/admin/posts/${post.id}`}
+                  >
+                    <p className="mt-5 text-slate-100 text-xl cursor-pointer">
+                      Lee mi ultima publicación aquí...
+                    </p>
+                  </Link>
                 </div>
               </div>
             </article>
@@ -75,9 +82,9 @@ const index = ({highlights, posts}) => {
                     src={post.image}
                   ></img>
                 </Link>
-                  <strong className="text-2xl absolute top-10 left-1/2">
-                    {post.title}
-                  </strong>
+                <strong className="text-2xl absolute top-10 left-1/2 cursor-pointer">
+                  {post.title}
+                </strong>
               </div>
             );
           })}

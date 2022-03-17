@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from './Footer';
 import NavbarHamburger from './NavbarHamburger';
 
 
@@ -12,7 +13,7 @@ const Layout = ({children}) => {
         <section className="container mx-auto bg-gray-100 border border-none">{children}</section>
       </main>
 
-      <footer className='bg-cyan-600 text-center'> footer</footer>
+      <Footer/>
     </div>
   );
   

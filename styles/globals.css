@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-
+img{
+  height: 300px;
+  width: 500px; 
+}
 .robo{
     font-family: 'Roboto', sans-serif;
 }
@@ -38,3 +41,4 @@
     position: relative;
     flex: 0 0 100%;
   }
+

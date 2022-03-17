@@ -1,4 +1,3 @@
-import React from 'react'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
@@ -9,6 +8,7 @@ import Link from 'next/link'
 const ButtonSesion = () => {
   
   const { data: session } = useSession()
+
   
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -38,7 +38,7 @@ const ButtonSesion = () => {
                     <Link
                       href="/"
                       as={"/"}
-                      className={ (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      className={ (active ? "bg-gray-100 text-gray-900" : " text-gray-200",
                       "block px-2 py-2 text-sm text-right")}
                     >
                       Inicio
@@ -52,7 +52,7 @@ const ButtonSesion = () => {
                       href="/admin/posts"
                       as={"/admin/posts"}
                       className={
-                        (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        (active ? "bg-gray-100 text-gray-900" : " text-gray-200",
                         "block px-2 py-2 text-sm text-right")
                       }
                     >
@@ -66,7 +66,7 @@ const ButtonSesion = () => {
                       href="/admin/posts/create"
                       as={"/admin/posts/create"}
                       className={
-                        (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        (active ? "bg-gray-100 text-gray-900" : "text-gray-200",
                         "block px-2 py-2 text-sm text-right")
                       }
                     >
@@ -74,20 +74,7 @@ const ButtonSesion = () => {
                     </Link>
                   )}
                 </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <Link
-                      href="/admin/comments"
-                      as={"/admin/comments"}
-                      className={
-                        (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                        "block px-2 py-2 text-sm text-right")
-                      }
-                    >
-                      Comments
-                    </Link>
-                  )}
-                </Menu.Item>
+                
               </div>
             )}
 
@@ -99,7 +86,7 @@ const ButtonSesion = () => {
                       type="submit"
                       onClick={() => signOut()}
                       className={
-                        (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        (active ? "bg-gray-100 text-gray-900" : " text-gray-200",
                         "block w-full text-right px-2 py-2 text-sm")
                       }
                     >
@@ -114,7 +101,7 @@ const ButtonSesion = () => {
                       type="submit"
                       onClick={() => signIn()}
                       className={
-                        (active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                        (active ? "bg-gray-100 text-gray-900" : " text-gray-200",
                         "block w-full text-right px-2 py-2 text-sm")
                       }
                     >
