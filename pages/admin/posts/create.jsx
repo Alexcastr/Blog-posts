@@ -51,18 +51,18 @@ const create = () => {
     <>
       <div className="p-7 h-screen">
         <input
-          className="text-black mt-4 mr-2"
+          className="p-2 rounded-lg text-black mt-4 mr-2"
           type="text"
           ref={titulo}
           placeholder="Titulo de la publicación"
         ></input>
         <input
-          className="text-black"
+          className="p-2 rounded-lg text-black"
           type="text"
           ref={image}
           placeholder="Imagen de la publicación"
         ></input>
-        <label htmlFor="highlight">¿Highlight?</label>
+        <label className='ml-2' htmlFor="highlight">¿Highlight?</label>
         <input
           id="highlight"
           className="text-black"
@@ -82,7 +82,7 @@ const create = () => {
           </div>
         ) : (
           <button
-            className="bg-cyan-600 text-black px-5 py-2 rounded-md mt-10"
+            className="bg-cyan-600 text-black px-5 py-2 rounded-md mt-5"
             onClick={saveContent}
           >
             Guardar

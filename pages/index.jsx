@@ -78,11 +78,11 @@ const index = ({highlights, posts}) => {
                   as={`/admin/posts/${post.id}`}
                 >
                   <img
-                    className="object-contain h-80 min-w-full mx-auto mt-8 cursor-pointer static"
+                    className="object-contain min-w-full mx-auto mt-8 cursor-pointer static"
                     src={post.image}
                   ></img>
                 </Link>
-                <strong className="text-2xl absolute top-10 left-1/2 cursor-pointer">
+                <strong className="text-2xl absolute bottom-1 right-96 cursor-pointer pb-2">
                   {post.title}
                 </strong>
               </div>
