@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import RatingIcon from '../../components/RatingIcon';
 
 const index = () => {
+
     const [rating, setRating] = useState(0);
     const [hoverRating, setHoverRating] = useState(0);
     const onMouseEnter = (index) => {

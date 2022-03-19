@@ -1,8 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import { useSession } from "next-auth/react";
 import RatingIcon from "../../../components/RatingIcon";
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from 'next/router';
 
 export async function getServerSideProps(context) {
   const secure = context.req.connection.encrypted;
@@ -21,9 +24,15 @@ export async function getServerSideProps(context) {
 }
 
 export default function Post({ post }) {
+  {console.log(post)}
   const { data: session } = useSession();
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
+
+  const comment = useRef(null)
+  const router =useRouter()
+
+
   const onMouseEnter = (index) => {
     setHoverRating(index);
   };
@@ -34,6 +43,29 @@ export default function Post({ post }) {
     setRating(index);
   };
   const starArray = [1,2,3,4,5]
+
+  const saveComment = async (e)=> {
+
+      e.preventDefault();
+      await axios.post("/api/posts/comment",{
+      name: session.user.name,
+      email: session.user.email,
+      message: comment.current.value,
+      stars: rating,
+      id: post.author.id,
+      postTitle: post.title
+
+    }).then(res=>{
+      console.log(res)
+      toast.success("Mensaje enviado con exito");
+      router.push("/")
+    
+    }).catch(error=>{
+      toast.error("Error enviando el mensaje", error);
+    })
+
+  }
+
   return (
     <>
       <div className="h-screen">
@@ -50,20 +82,49 @@ export default function Post({ post }) {
           <ReactMarkdown>{post.content}</ReactMarkdown>
         </article>
       </div>
-      <div className="flex justify-center pb-2">
-        {starArray.map((index) => {
-          return (
-            <RatingIcon
-              index={index}
-              rating={rating}
-              hoverRating={hoverRating}
-              onMouseEnter={onMouseEnter}
-              onMouseLeave={onMouseLeave}
-              onSaveRating={onSaveRating}
-            />
-          );
-        })}
-      </div>
+
+      <form onSubmit={saveComment}>
+        <div className="flex justify-center">
+          {session ? (
+            <div>
+              <img
+                className="w-10 h-10 rounded-full"
+                src={session.user.image}
+                alt={session.user.name}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
+          <textarea
+            required
+            ref={comment}
+            placeholder="Comentarios"
+            className="border border-gray-800 w-96 h-60 p-2 ml-2 mb-2"
+          />
+        </div>
+        <div className="flex justify-center pb-4">
+          {starArray.map((index) => {
+            return (
+              <RatingIcon
+                index={index}
+                rating={rating}
+                hoverRating={hoverRating}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                onSaveRating={onSaveRating}
+              />
+            );
+          })}
+          <button
+            type="submit"
+            className=" ml-14  bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+          >
+            Publicar
+          </button>
+        </div>
+      </form>
+      <ToastContainer autoClose={5000}/>
     </>
   );
 }
