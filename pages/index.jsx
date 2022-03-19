@@ -21,7 +21,7 @@ export async function getServerSideProps(context){
 
 const index = ({highlights, posts}) => {
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()])
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
   useEffect(() => {
     if (emblaApi) {
       // Embla API is ready

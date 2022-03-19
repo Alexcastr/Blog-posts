@@ -25,7 +25,7 @@ const index = () => {
       message: mensaje.current.value,
     }).then(res=>{
       console.log(res)
-      toast.success("Mensaje enviado con exito");
+      toast.info("Mensaje enviado con exito");
       router.push("/")
     
     }).catch(error=>{

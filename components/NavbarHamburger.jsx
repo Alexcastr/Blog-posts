@@ -2,7 +2,7 @@ import {useState} from 'react'
 import ButtonSesion from './ButtonSesion';
 import Link from 'next/link';
 
-const NavbarHamburger = ({}) => {
+const NavbarHamburger = () => {
  
   const [navbarOpen, setNavbarOpen] = useState(false)
   
@@ -12,7 +12,7 @@ const NavbarHamburger = ({}) => {
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
-              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-black"
+              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 uppercase text-black"
               href="/"
             >
               Marketing<span className='text-gray-200'> Digital</span>

@@ -39,7 +39,7 @@ const create = () => {
             highlight:highlight.current.checked,
             content,
         }).then(res=>{
-          toast.success("Post creado con exito !")
+          toast.info("Post creado con exito !")
             router.replace("/admin/posts")
         })
         .catch(error=>{
@@ -51,12 +51,14 @@ const create = () => {
     <>
       <div className="p-7 h-screen">
         <input
+          required
           className="p-2 rounded-lg text-black mt-4 mr-2"
           type="text"
           ref={titulo}
           placeholder="Titulo de la publicación"
         ></input>
         <input
+          required
           className="p-2 rounded-lg text-black"
           type="text"
           ref={image}

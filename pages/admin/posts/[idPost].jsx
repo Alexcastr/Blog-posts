@@ -57,7 +57,7 @@ export default function Post({ post }) {
 
     }).then(res=>{
       console.log(res)
-      toast.success("Mensaje enviado con exito");
+      toast.info("Mensaje enviado con exito");
       router.push("/")
     
     }).catch(error=>{
@@ -103,7 +103,8 @@ export default function Post({ post }) {
             className="border border-gray-800 w-96 h-60 p-2 ml-2 mb-2"
           />
         </div>
-        <div className="flex justify-center pb-4">
+        
+          {session ? (<div className="flex justify-center pb-4">
           {starArray.map((index) => {
             return (
               <RatingIcon
@@ -116,15 +117,22 @@ export default function Post({ post }) {
               />
             );
           })}
-          <button
-            type="submit"
-            className=" ml-14  bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
-          >
-            Publicar
-          </button>
-        </div>
+            <button
+              type="submit"
+              className=" ml-14  bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+            >
+              Publicar
+            </button> 
+            </div>
+          ) : (
+            
+            <div className="pb-2 text-lg text-center">Inicia sesion para agregar comentarios</div>
+            
+          )}
+       
       </form>
-      <ToastContainer autoClose={5000}/>
+      <ToastContainer autoClose={5000} />
+      
     </>
   );
 }
