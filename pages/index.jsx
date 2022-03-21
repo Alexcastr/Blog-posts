@@ -3,6 +3,7 @@ import axios from 'axios'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
 import Link from "next/link";
+import { motion } from "framer-motion"
 
 // import { EmblaCarousel } from '../components/EmblaCarousel'
 
@@ -65,9 +66,13 @@ const index = ({highlights, posts}) => {
           );
         })}
       </header>
-      <h2 className="text-4xl text-gray-200 font-bold mt-20 mb-10 text-center border bg-cyan-600 py-2">
+      <motion.h2
+      drag
+      dragConstraints={{ left: -200, right: 200 }}
+      dragElastic={0.2}
+      className="text-4xl text-gray-200 font-bold mt-20 mb-10 text-center border bg-cyan-600 py-2">
         Publicaciones más recientes
-      </h2>
+      </motion.h2>
       <div className="embla" ref={emblaRef}>
         <div className="flex justify-items-center h-96">
           {posts.map((post) => {

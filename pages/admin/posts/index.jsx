@@ -1,10 +1,15 @@
-import React from 'react'
+import {useState} from 'react'
+// import { Dialog } from "@material-ui/core";
+import { motion } from "framer-motion"
+
 import Link from 'next/link'
 import axios from 'axios'
 
 
 
 export async function getServerSideProps(context) {
+
+
   const secure = context.req.connection.encrypted;
 
   const url = `${secure ? "https" : "http"}://${
@@ -21,17 +26,29 @@ export async function getServerSideProps(context) {
 }
 
 export default function Posts({ posts }) {
+
+  // const [showComments, setShowComments] = useState(false)
+
+  
+
   return (
     <>
-      <h1 className="text-xl text-center text-gray-200 bg-cyan-600 py-4 mb-4">
+      <div className="text-xl text-center text-gray-200 bg-cyan-600 py-4 mb-4">
         Todo lo que necesitas saber sobre marketing digital 📱
-      </h1>
+      </div>
       {/* <Link href="/admin/posts/create">Crear nueva publicación</Link> */}
 
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {posts.map((post) => {
           return (
-            <article className="bg-gray-500 p-5 m-1 rounded-md" key={post.id}>
+            <motion.article
+              drag="x"
+              dragConstraints={{ left: -100, right: 100 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-gray-500 p-5 m-1 rounded-md"
+              key={post.id}
+            >
               <div className="flex items-center mb-5">
                 <img
                   className="h-10 w-10 rounded-full mr-3"
@@ -57,10 +74,19 @@ export default function Posts({ posts }) {
               <p className="text-sm text-gray-200 text-justify mb-3 shortText">
                 {post.content}
               </p>
-            </article>
+              {/* <button
+                className='bg-cyan-600 text-black px-5 py-2 rounded-md mt-5"'
+                onClick={() => setShowComments(true)}
+              >
+                Show Comments
+              </button> */}
+            </motion.article>
           );
         })}
       </section>
+      {/* <Dialog open={showComments} onClose={() => setShowComments(false)}>
+        <div>comentarios</div>
+      </Dialog> */}
     </>
   );
 }

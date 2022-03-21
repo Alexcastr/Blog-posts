@@ -6,6 +6,8 @@ import RatingIcon from "../../../components/RatingIcon";
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from 'next/router';
+import { nanoid } from "nanoid";
+import { motion } from "framer-motion"
 
 export async function getServerSideProps(context) {
   const secure = context.req.connection.encrypted;
@@ -24,7 +26,7 @@ export async function getServerSideProps(context) {
 }
 
 export default function Post({ post }) {
-  {console.log(post)}
+
   const { data: session } = useSession();
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
@@ -96,43 +98,52 @@ export default function Post({ post }) {
           ) : (
             <></>
           )}
-          <textarea
+          <motion.textarea
+          whileFocus={{ scale: 1.2 }}
             required
             ref={comment}
             placeholder="Comentarios"
             className="border border-gray-800 w-96 h-60 p-2 ml-2 mb-2"
           />
         </div>
-        
-          {session ? (<div className="flex justify-center pb-4">
-          {starArray.map((index) => {
-            return (
-              <RatingIcon
-                index={index}
-                rating={rating}
-                hoverRating={hoverRating}
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
-                onSaveRating={onSaveRating}
-              />
-            );
-          })}
+
+        {session ? (
+          <div className="flex justify-center pb-4">
+            {starArray.map((index) => {
+              return (
+                <motion.div 
+                  whileHover={{
+                  scale: 1.5,
+                  transition: { duration: 1 },
+                }}
+                whileTap={{ scale: 1 }}
+                key={nanoid()}>
+                  <RatingIcon
+                    index={index}
+                    rating={rating}
+                    hoverRating={hoverRating}
+                    onMouseEnter={onMouseEnter}
+                    onMouseLeave={onMouseLeave}
+                    onSaveRating={onSaveRating}
+                  />
+                </motion.div>
+              );
+            })}
             <button
+             
               type="submit"
-              className=" ml-14  bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
+              className=" ml-14 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded-full"
             >
               Publicar
-            </button> 
-            </div>
-          ) : (
-            
-            <div className="pb-2 text-lg text-center">Inicia sesion para agregar comentarios</div>
-            
-          )}
-       
+            </button>
+          </div>
+        ) : (
+          <div className="pb-2 text-lg text-center">
+            Inicia sesion para agregar comentarios
+          </div>
+        )}
       </form>
       <ToastContainer autoClose={5000} />
-      
     </>
   );
 }
